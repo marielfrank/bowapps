@@ -54,7 +54,10 @@ function createGraph(groups){
     .attr("id", "xaxis")
     .attr("transform", "translate(0, " + (height-30) + ")")
     .call(xAxis);  
-}
+  
+  const zero = $('#xaxis').find('text').first()
+  zero.attr('x', '5')
+  }
 
 /*
 * Adding refresh method to reload new data
