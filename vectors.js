@@ -74,9 +74,8 @@ function createTestCounts(){
 
 function addToTrainingDocs(doc){
   trainingDocs.push(doc)
-  var trainingSentence = $("<p>"+doc+"</p>")
+  var trainingSentence = $("<div class='trainingDoc' data-text='"+doc+"'><span>"+doc+"</span><button class='remove' data-doc='"+doc+"'>X</button></></div>")
   $(".trainingText").prepend(trainingSentence)
-
   createTrainingCounts()
 }
 
@@ -92,6 +91,15 @@ $(document).ready(function(){
   $(".add").on('click',function(){
     var trainDoc = $(".trainingInput").val()
     addToTrainingDocs(trainDoc)
+    updateTrainingDisplay()
+  })
+
+  $(".remove").on('click', function(){
+    var docToRemove = $(this).attr("data-doc")
+    var toRemove = $("div").find("[data-text='" + docToRemove + "']"); 
+    toRemove.remove()
+    trainingDocs.pop(trainingDocs.indexOf(docToRemove));
+    createTrainingCounts()
     updateTrainingDisplay()
   })
 })

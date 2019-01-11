@@ -13,3 +13,8 @@ p, h1, span {
 .vectorCount {
   margin: 5px;
 }
+
+.remove {
+	margin-left: 5px;
+	padding: 1px;
+}
