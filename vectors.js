@@ -1,8 +1,7 @@
-
-var trainingDocs = [];
-var trainingCounts = {};
-var testCounts = {};
-var userInput = "";
+let trainingDocs = [];
+let trainingCounts = {};
+let testCounts = {};
+let userInput = "";
 
 function setup(){
   addToTrainingDocs("Five fantastic fish flew off to find faraway functions.")
@@ -13,7 +12,7 @@ function setup(){
 function updateTrainingDisplay(){
   $(".vectorCounts").empty()
   $(".vectorWords").empty()
-
+  console.log("training docs: ", trainingDocs)
   var nchild = 0
 
   for(key in trainingCounts){
@@ -74,9 +73,19 @@ function createTestCounts(){
 
 function addToTrainingDocs(doc){
   trainingDocs.push(doc)
-  var trainingSentence = $("<div class='trainingDoc' data-text='"+doc+"'><span>"+doc+"</span><button class='remove' data-doc='"+doc+"'>X</button></></div>")
+  var trainingSentence = $("<div class='trainingDoc' data-text='"+doc+"'><span>"+doc+"</span><button class='remove' onclick='addRemove(event)' data-doc='"+doc+"'>x</button></></div>")
   $(".trainingText").prepend(trainingSentence)
   createTrainingCounts()
+}
+
+function addRemove(event) {
+  var docToRemove = event.target.attributes[2].nodeValue
+  var toRemove = $("div").find("[data-text='" + docToRemove + "']"); 
+  trainingDocs.splice(trainingDocs.indexOf(docToRemove), 1);
+  // console.log("train docs:", trainingDocs)
+  toRemove.remove()
+  createTrainingCounts()
+  updateTrainingDisplay()
 }
 
 $(document).ready(function(){
@@ -90,16 +99,12 @@ $(document).ready(function(){
 
   $(".add").on('click',function(){
     var trainDoc = $(".trainingInput").val()
-    addToTrainingDocs(trainDoc)
-    updateTrainingDisplay()
+    if (trainDoc.length > 0) {
+      addToTrainingDocs(trainDoc)
+      updateTrainingDisplay()
+      $(".trainingInput").val("")
+    }
   })
 
-  $(".remove").on('click', function(){
-    var docToRemove = $(this).attr("data-doc")
-    var toRemove = $("div").find("[data-text='" + docToRemove + "']"); 
-    toRemove.remove()
-    trainingDocs.pop(trainingDocs.indexOf(docToRemove));
-    createTrainingCounts()
-    updateTrainingDisplay()
-  })
+
 })

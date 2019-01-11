@@ -2,38 +2,61 @@ body {
   background-color: midnightblue;
 }
 
-p, h1, span {
+p, h3, span {
   color: white;
+}
+
+h3 {
+  margin-left: -15px;
+  margin-top: 40px;
 }
 
 .trainingWord {
   margin: 5px;
+  font-size: 18px;
 }
 
 .vectorCount {
   margin: 5px;
+  font-size: 18px;
+  color: #ffc107;
+  font-weight: bold;
 }
 
 .remove {
-	margin-left: 5px;
-	padding: 1px;
+  margin-left: 5px;
+  padding: 0 8px 2px;
+  font-size: 16px;
+  border: none;
+  background: #9385f5;
+  color: #000;
+  margin-bottom: 5px;
+  font-weight: bolder;
+  border-radius: 12px;
+}
+
+.trainingText {
+  font-size: 18px;
 }
 
 .inputRow {
-  margin-left: 10px;
-  margin-right: 10px;
   font-size: 18px;
   text-align: left;
+  padding-top: 15px;
 }
 
 .submit, .add {
   background: #e85d7f;
   border: none;
-  height: 41px;
+  height: 35px;
   color: #fff;
   margin-left: 10px;
 }
 
 .submit:hover, .submit:active, .add:hover, .add:active {
   background-color: #544f7b;
+}
+
+.userInput, .trainingInput {
+  margin-left: 10px;
 }
