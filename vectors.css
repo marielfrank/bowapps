@@ -18,3 +18,22 @@ p, h1, span {
 	margin-left: 5px;
 	padding: 1px;
 }
+
+.inputRow {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 18px;
+  text-align: left;
+}
+
+.submit, .add {
+  background: #e85d7f;
+  border: none;
+  height: 41px;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.submit:hover, .submit:active, .add:hover, .add:active {
+  background-color: #544f7b;
+}
